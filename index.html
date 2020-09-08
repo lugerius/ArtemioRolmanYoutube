@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta Http-Equiv="Cache-Control" Content="no-cache">
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=3, user-scalable=yes">
+		<meta name="description" content="Buscador de preguntas Artemio y Rolman">
+		<meta name="keywords" content="Musica, videojuegos, mister, juegos, clasicos, buscador, search, youtube, Artemio, Rolman">
+		<meta name="author" content="Lugerius">
+		<title>Platicando con Artemio y Rolman</title>
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="css/main.css?v1a" />
+		<link rel="icon" sizes="192x192" href="images/artrol.jpg">
+		<link rel="apple-touch-icon-precomposed" href="images/artrol.jpg" />
+		<link rel="apple-touch-icon" href="images/artrol.jpg" />
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="js/engine.js?v4" type="text/javascript"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header">
+				<h1>Platicando con Artemio y Rolman</h1>
+				<a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+				<form class="ui-filterable">
+					<input id="suggest" data-type="search" placeholder="Buscar tema o episodio (ep#)">
+					<input type="hidden" id="numrows" value="0">
+				</form>
+				<ul id="autocomplete" data-role="listview" data-split-icon="bullets" data-inset="true" data-filter="true" data-filter-reveal="true" data-count-theme="b" data-input="#suggest">	
+				</ul>
+				<div id="playerContainer"><div id="player"></div></div>
+				<div class="ui-bar ui-bar-a ui-corner-all" id="autor">&nbsp;</div>
+				<div class="ui-grid-a ui-responsive" id="playlistControls">
+					<div class="ui-block-a"><input type="button" data-mini="true" id="iniciaP" data-icon="video" value="Reproducir lista"></div>
+					<div class="ui-block-b"><input type="button" data-mini="true" id="resetP" data-icon="delete" value="Vaciar lista"></div>
+				</div>
+				<table data-role="table" id="playlist" data-mode="reflow" class="movie-list">
+					<thead>
+						<tr>
+							<th class=".ui-table-cell-label">#</th>
+							<th class=".ui-table-cell-label" style="width:90%">Pregunta</th>
+							<th class=".ui-table-cell-label" id="duration">Duración</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div><!-- /content -->
+			<div data-role="popup" id="AddPlaylist" class="ui-content" data-theme="b">
+				<p>Agregado a la lista.</p>
+			</div><!-- /popup -->
+			<div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+				<ul data-role="listview">
+					<li data-icon="delete"><a href="#" data-rel="close">Cerrar</a></li>
+                    <li><a target="_blank" href="https://twitter.com/Artemio">Twitter</a></li>
+                    <li><a target="_blank" href="http://youtube.com/c/ArtemioUrbina">Youtube</a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/artemio.urbina/">Instagram</a></li>
+                    <li><a target="_blank" href="https://www.patreon.com/aurbina">Patreon</a></li>
+                    <li><a target="_blank" href="https://ko-fi.com/artemio">Ko-fi</a></li>
+				</ul>
+			</div><!-- /panel -->	
+			<div data-role="footer" data-position="fixed">
+				<h4>Comunidad ScoreVG</h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+	</body>
+</html>
