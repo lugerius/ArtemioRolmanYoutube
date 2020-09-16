@@ -1,8 +1,8 @@
 /*
 *
-* YoutubeSearch Search
+* YoutubeSearch
 * Desarrollado: Luis Mendoza @lugerius
-* js/engine.js Contiene el motor de busqueda dinámica y las funciones necesarias
+* js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
 *
 */
 
@@ -21,18 +21,17 @@ $(function() {
 		
 	$( "#autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
 		var ul = $( this );
-		query = $("#suggest").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-		engine = 'js/artrol.json?nocache=' + (new Date()).getTime();
-		pregunta = "";
-		episodestr = ['ep','episodio','ep-','episodio-'];
-		html = "";
-		resultados = 0;
+		var query = $("#suggest").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");	// elimina acentos y tildes
+		var dbase = 'js/artrol.json?nocache=' + (new Date()).getTime();
+		var episodestr = ['ep','episodio','ep-','episodio-'];	// Para búsqueda por episodio
+		var html = "";
+		var resultados = 0; // contador de resultados
 		ul.html( "" );
-		if ( query && query.length > 2 ) { // A partir de dos caracteres inicia busqueda 
+		if ( query && query.length > 2 ) {	// A partir de dos caracteres inicia busqueda 
 			$("#autocomplete").fadeIn(50);
 			ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
 			ul.listview( "refresh" );
-			$.getJSON( engine, function( data ) {
+			$.getJSON( dbase, function( data ) {	// Muestra resultados de búsqueda
 				$.each ( data , function(key, val){
 					var episode 	= val["0"];
 					var uri 		= val["1"];
@@ -62,27 +61,32 @@ $(function() {
 	});
 });
 
+
+// Búsqueda por múltiples palabras
+
 function checkTopics(arr, target){
 	return arr.every(i => target.includes(i));
 }
 
 
-// Configura el player de youtube para ir a un episodio y tiempo deseados
+// Reproducir player de youtube a un episodio y tiempo deseados
 
 function setPlayer (uri, time, end, question) {
-	startP = 0;
+	startP = 0; 
 	cancelStop();
 	stopVideo();
 	player.loadVideoById({'videoId': uri,
 						  'startSeconds': time,
 						  'endSeconds': end});
-	fadeoutime = (parseInt(end)-parseInt(time))*1000;
+	var fadeoutime = (parseInt(end)-parseInt(time))*1000;
 	$("#suggest").val("");
 	$("#autor").html(question).show();
 	$("#autor").fadeOut(fadeoutime);
 	$("#autocomplete").fadeOut(200);
 }
 
+
+// Agregar elementos a la playlist
 
 var playlist = [];
 var playlistdata = [];
@@ -100,6 +104,9 @@ function setPlaylist (uri, time, end, question) {
 	showDuration();
 }
 
+
+// Tiempo total de la playlist 
+
 function showDuration(){
 	var total = 0;
 	for (let i=0;i<playlistdata.length;i++) {
@@ -107,6 +114,9 @@ function showDuration(){
 	}
 	$("#duration").html("Duración <b>"+timeInHms(total)+"</b>");
 }
+
+
+//Inicializa la reproducción de la playlist
 
 function startPlaylist (numcue) {
 	cancelStop();
@@ -117,6 +127,8 @@ function startPlaylist (numcue) {
 	$("#autocomplete").fadeOut(200);
 }
 
+
+// Borra la playlist
 
 function flushPlaylist() {
 	$("#numrows").val(0);
@@ -131,6 +143,9 @@ function flushPlaylist() {
 	playlist = [];
 	playlistdata = [];
 }
+
+
+// Inicialización de la api del player de youtube 
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -154,8 +169,11 @@ function onYouTubeIframeAPIReady() {
 		 	'onStateChange': onPlayerStateChange
 		}
 
-	});
+	});merca
 }
+
+
+// Interacciones de las reproducciones vía playlist (startP != 0) a los cambios de estado del player de Youtube, 
 
 function onPlayerStateChange(event) {
 	if (startP == 2 && event.data == YT.PlayerState.CUED) {
@@ -187,14 +205,20 @@ function onPlayerStateChange(event) {
 		stoptime.resume();
 		startP = 2;
 	}
-	console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP);	
+	//console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP);	
 }
-	
+
+
+// Detener reproducción.
+
 function stopVideo(){
 	if (typeof player !== 'undefined') {
 		player.stopVideo();
 	}
 }
+
+
+// Cancelar el Timer que detiene la reproducción. Solo se usa en reproducciones desde playlist
 
 function cancelStop(){
 	if (typeof stoptime !== 'undefined') {
@@ -206,6 +230,7 @@ function cancelStop(){
 	$("#autor").html("&nbsp;");
 }
 
+
 // Cambia el tiemo en formato hh:mm:ss a tiempo en milisegundos
 
 function timeInS(time) {
@@ -214,13 +239,18 @@ function timeInS(time) {
 	return s; 
 }
 
+
+// Cambia el tiempo en segundos a formato hh:mm:ss
+
 function timeInHms(inseconds){
 	var measuredTime = new Date(null);
 	measuredTime.setSeconds(inseconds); // specify value of SECONDS
 	return measuredTime.toISOString().substr(11, 8);
 }
 
-// settimeout with pause resume
+
+// Redefine el setTimout con la propiedad de ser pausado y retomado, Solo se usa en reproducciones desde playlist.
+
 var Timer = function(callback, delay) {
     var timerId, start, remaining = delay;
 
