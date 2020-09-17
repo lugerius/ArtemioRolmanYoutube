@@ -22,7 +22,7 @@ $(function() {
 	$( "#autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
 		var ul = $( this );
 		var query = $("#suggest").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");	// elimina acentos y tildes
-		var dbase = 'js/artrol.json?nocache=' + (new Date()).getTime();
+		var dbase = 'js/artrol.json?nocache=' + (new Date()).getDay(); // obtiene el archivo json cada día
 		var episodestr = ['ep','episodio','ep-','episodio-'];	// Para búsqueda por episodio
 		var html = "";
 		var resultados = 0; // contador de resultados
