@@ -25,7 +25,8 @@ $(function() {
 		var dbase = 'js/artrol.json?nocache=' + (new Date()).getDay(); // obtiene el archivo json cada día
 		var episodestr = ['ep','episodio','ep-','episodio-'];	// Para búsqueda por episodio
 		var html = "";
-		var resultados = 0; // contador de resultados
+		var results = 0; // contador de resultados
+		var allresults = [];
 		ul.html( "" );
 		if ( query && query.length > 2 ) {	// A partir de dos caracteres inicia busqueda 
 			$("#autocomplete").fadeIn(50);
@@ -42,11 +43,17 @@ $(function() {
 					var duration 	= timeInS(val["4"]);
 					var end 		= parseInt(time)+parseInt(duration);
 					if (checkTopics(topic, question) || episode.includes(query) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode || qnoaccent.includes(query)) {
-						resultados++;
-						html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+resultados+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
+						var dataresult = {uri, time, end, question};
+						results++;
+						html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
+						allresults.push(dataresult);
 					}
 				})
-				ul.html( html );
+				jsonresult = JSON.stringify(allresults);
+				if ( html != "") {
+					alltoplist = '<li data-theme="b"><a href="#" onclick="setAllToPlist();" style="text-align:center;">Agregar los '+results+' resultados a Playlist</a></li>';
+				}
+				ul.html( alltoplist + html );
 				ul.listview( "refresh" );
 				$('li').removeClass("ui-screen-hidden");
 				ul.trigger( "updatelayout");
@@ -102,6 +109,16 @@ function setPlaylist (uri, time, end, question) {
 	playlist.push(uri);
 	playlistdata.push({"uri": uri, "time": time, "end": end, "question": question});
 	showDuration();
+}
+
+// Agregar todos los elementos de una búsqueda a la playlist
+
+function setAllToPlist () {
+	jsonobject = JSON.parse(jsonresult);
+	$.each( jsonobject, function( key, value ) {
+		setPlaylist(value["uri"], value["time"], value["end"], value["question"]);
+	});
+	$("#autocomplete").fadeOut(200);
 }
 
 
@@ -231,7 +248,7 @@ function cancelStop(){
 }
 
 
-// Cambia el tiemo en formato hh:mm:ss a tiempo en milisegundos
+// Cambia el tiempo en formato hh:mm:ss a tiempo en milisegundos
 
 function timeInS(time) {
 	var standardTime = time.split(":");

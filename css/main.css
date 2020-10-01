@@ -23,7 +23,6 @@ img {
     height: auto;
 }
 
-
 @media screen and (min-width: 1024px) {
     #playerContainer {width:70%;height:450px;margin:auto;}
     #playlist{width:70%;text-align:center;margin:auto;}
