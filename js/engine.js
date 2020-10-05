@@ -3,6 +3,7 @@
 * YoutubeSearch
 * Desarrollado: Luis Mendoza @lugerius
 * js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
+* Documentación de api de youtube https://developers.google.com/youtube/iframe_api_reference
 *
 */
 
@@ -10,6 +11,7 @@ $(function() {
 	flushPlaylist();
 	$("#suggest").focus(function(){
 		$("#suggest").val("");
+		jsonresult = "";
 		$("#autocomplete").fadeOut(200);
 	});
 	$("#playerContainer").mouseenter(function(){
@@ -49,6 +51,7 @@ $(function() {
 						allresults.push(dataresult);
 					}
 				})
+				var alltoplist = "";
 				jsonresult = JSON.stringify(allresults);
 				if ( html != "") {
 					alltoplist = '<li data-theme="b"><a href="#" onclick="setAllToPlist();" style="text-align:center;">Agregar los '+results+' resultados a Playlist</a></li>';
@@ -104,7 +107,7 @@ function setPlaylist (uri, time, end, question) {
 	$("#numrows").val(renglon);
 	$("#playlistControls").show();
 	$("#playlist").show();
-	$("tbody").append('<tr><th>'+renglon+'</th><td class="title"><a href="#" onclick="startPlaylist(\''+renglon+'\');">'+question+'</a></td><td>'+duration+'[s]</td></tr>');
+	$("tbody").append('<tr id="line'+renglon+'"><th>'+renglon+'</th><td><a href="#" onclick="startPlaylist(\''+renglon+'\');">'+question+'</a></td><td>'+duration+'[s]</td></tr>');
 	var fadepop = setTimeout(function(){ $("#AddPlaylist").popup("close"); }, 800);
 	playlist.push(uri);
 	playlistdata.push({"uri": uri, "time": time, "end": end, "question": question});
@@ -113,8 +116,9 @@ function setPlaylist (uri, time, end, question) {
 
 // Agregar todos los elementos de una búsqueda a la playlist
 
+var jsonresult = "";
 function setAllToPlist () {
-	jsonobject = JSON.parse(jsonresult);
+	var jsonobject = JSON.parse(jsonresult);
 	$.each( jsonobject, function( key, value ) {
 		setPlaylist(value["uri"], value["time"], value["end"], value["question"]);
 	});
@@ -138,6 +142,8 @@ function showDuration(){
 function startPlaylist (numcue) {
 	cancelStop();
 	stopVideo();
+	var currentplay = parseInt(player.getPlaylistIndex())+1;
+	$("#line"+currentplay+"").css({"background-color":""}); // elimina el estilo resalatado de la reproducción anterior
 	player.cuePlaylist(playlist, parseInt(numcue)-1);
 	player.playVideoAt(parseInt(numcue)-1);
 	startP = 1;
@@ -190,31 +196,33 @@ function onYouTubeIframeAPIReady() {
 }
 
 
-// Interacciones de las reproducciones vía playlist (startP != 0) a los cambios de estado del player de Youtube, 
+// Interacciones de las reproducciones vía playlist (startP != 0) a los cambios de estado del player de Youtube, consultar la api para referencias https://developers.google.com/youtube/iframe_api_reference
 
 function onPlayerStateChange(event) {
+	var currentindex = event.target.getPlaylistIndex();
 	if (startP == 2 && event.data == YT.PlayerState.CUED) {
-		
-		if (event.target.getPlaylistIndex() == playlist.length-1) {
+		if (currentindex == playlist.length-1) {
 			delete startP;
 			event.target.stopVideo();
 		} else {
 			if ((event.target.getPlaylist()).length !== playlist.length) {
-				startPlaylist(parseInt(event.target.getPlaylistIndex())+2);
+				startPlaylist(parseInt(currentindex)+2);
 			} else {
+				$("#line"+parseInt(currentindex+1)+"").css({"background-color":""}); // quito resaltado al continuar con nuevo elemento de playlist
 				event.target.nextVideo();
 				startP = 1;	
 			}		
 		}
-	} else if (startP == 2 && event.data == YT.PlayerState.PLAYING){
-		stoptime = new Timer(stopVideo, (parseInt(playlistdata[event.target.getPlaylistIndex()].end)-parseInt(playlistdata[event.target.getPlaylistIndex()].time))*1000);
+	} else if (startP == 2 && event.data == YT.PlayerState.PLAYING) {
+		stoptime = new Timer(stopVideo, (parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
 	} else if (startP == 1 && (event.data == -1 || event.data == 5) ) {
 		event.target.playVideo();
-	} else if (startP == 1 && event.data == YT.PlayerState.PLAYING){
-		$("#autor").html(playlistdata[event.target.getPlaylistIndex()].question).show();
-		$("#autor").fadeOut((parseInt(playlistdata[event.target.getPlaylistIndex()].end)-parseInt(playlistdata[event.target.getPlaylistIndex()].time))*1000);
+	} else if (startP == 1 && event.data == YT.PlayerState.PLAYING) {
+		$("#autor").html(playlistdata[currentindex].question).show();
+		$("#autor").fadeOut((parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
+		$("#line"+parseInt(currentindex+1)+"").css({"background-color":"#ddd"}); // resalto renglon en reproducción en playlist
 		startP = 2;
-		event.target.seekTo(playlistdata[event.target.getPlaylistIndex()].time);
+		event.target.seekTo(playlistdata[currentindex].time);
 	} else if (startP != 0 && typeof stoptime !== 'undefined' && event.data == YT.PlayerState.PAUSED) {
 		stoptime.pause();
 		startP = 3;
@@ -261,7 +269,7 @@ function timeInS(time) {
 
 function timeInHms(inseconds){
 	var measuredTime = new Date(null);
-	measuredTime.setSeconds(inseconds); // specify value of SECONDS
+	measuredTime.setSeconds(inseconds); // el valor en segundos
 	return measuredTime.toISOString().substr(11, 8);
 }
 
