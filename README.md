@@ -14,8 +14,6 @@ La lista de preguntas se obtiene directamente del indexado de las mismas en los 
 Hay un archivo en Google drive que tiene la lista completa de las preguntas indexadas
 https://docs.google.com/spreadsheets/d/1sC5BDaQklPzsLZiDoz-mum9w14a-7Z-dOeE3G1IfpXA/edit?usp=sharing
 
-Las personas que quieran colaborar pueden descargar el archivo y agregar los episodios faltantes o bien descargando y actualizando el archivo
-js/artrol.json
 
 # Para usarlo como aplicación en dispositivos móviles.
 
