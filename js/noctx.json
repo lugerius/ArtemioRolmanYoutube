@@ -1,0 +1,968 @@
+[
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "0:00:00",
+"3": "Roland MT-32",
+"4": "0:01:27"
+},
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "0:01:27",
+"3": "Silpheed",
+"4": "0:06:12"
+},
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "0:07:39",
+"3": "The Secret of Monkey Island",
+"4": "0:21:17"
+},
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "0:28:56",
+"3": "Dune II",
+"4": "0:27:43"
+},
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "0:56:39",
+"3": "Loom",
+"4": "0:10:10"
+},
+{
+"0": "Roland MT-32 MIDI",
+"1": "nKCHM2u2PtQ",
+"2": "1:06:49",
+"3": "Akumajou Dracula X68000",
+"4": "0:37:15"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:00:00",
+"3": "PC-8801 FA",
+"4": "0:00:52"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:00:52",
+"3": "Misty Blue",
+"4": "0:06:48"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:07:40",
+"3": "Ys II",
+"4": "0:06:20"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:14:00",
+"3": "Snatcher PC-8801",
+"4": "0:10:00"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:24:00",
+"3": "Popful Mail (didnt remember how to load the intro, will redo in part two)",
+"4": "0:03:50"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "0:27:50",
+"3": "Yu-No",
+"4": "1:19:45"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "1:47:35",
+"3": "Bare Knuckle (Streets of Rage) MUCOM88",
+"4": "0:17:20"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "2:04:55",
+"3": "The Scheme (title screen)",
+"4": "0:03:05"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "2:08:00",
+"3": "The Scheme (music test YM2608)",
+"4": "0:25:18"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "2:33:18",
+"3": "Ys",
+"4": "0:05:42"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "2:39:00",
+"3": "Super Shinobi (The Revenge of Shinobi) MUCOM88",
+"4": "0:11:40"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "qearAUsfAXQ",
+"2": "2:50:40",
+"3": "Yu-No ふれあい (Fureai)",
+"4": "0:05:15"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:00:00",
+"3": "PC-8801 FA",
+"4": "0:00:10"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:00:10",
+"3": "Popful Mail",
+"4": "0:09:20"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:09:30",
+"3": "Silpheed",
+"4": "0:06:30"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:16:00",
+"3": "Actraiser MUCOM88",
+"4": "0:11:24"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:27:24",
+"3": "Startrader",
+"4": "0:02:46"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "0:30:10",
+"3": "Revolter",
+"4": "0:34:23"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "1:04:33",
+"3": "Ys III (Intro)",
+"4": "0:04:47"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "1:09:20",
+"3": "Bare Knucke II (Streets of Rage 2)",
+"4": "0:18:40"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "1:28:00",
+"3": "Ys",
+"4": "0:20:49"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "1:48:49",
+"3": "Ys II",
+"4": "0:19:58"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:08:47",
+"3": "Ys III (Be careful)",
+"4": "0:03:03"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:11:50",
+"3": "Sorcerian",
+"4": "0:05:32"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:17:22",
+"3": "Misty Blue MUCOM88",
+"4": "0:12:40"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:30:02",
+"3": "Misty Blue (backstory)",
+"4": "0:06:20"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:36:22",
+"3": "Misty Blue Intro",
+"4": "0:06:42"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:43:04",
+"3": "PC-8801FA Demo",
+"4": "0:04:32"
+},
+{
+"0": "PC-8801 YM2608/OPNA",
+"1": "mDosHMMs9vM",
+"2": "2:47:36",
+"3": "Yu-No ふれあい (Fureai",
+"4": "0:04:44"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "0:00:00",
+"3": "Setup",
+"4": "0:02:20"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "0:02:20",
+"3": "Ghouls n' Ghosts",
+"4": "0:19:24"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "0:21:44",
+"3": "Strider",
+"4": "0:26:06"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "0:47:50",
+"3": "Willow",
+"4": "0:16:39"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "1:04:29",
+"3": "Final Fight",
+"4": "0:19:52"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "1:24:21",
+"3": "Magic Sword",
+"4": "0:16:09"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "1:40:30",
+"3": "Street Fighter II",
+"4": "0:38:45"
+},
+{
+"0": "Capcom CPS-I YM2151/OPM + OKI6295",
+"1": "7Lc534Ag0vc",
+"2": "2:19:15",
+"3": "Vart",
+"4": "0:33:05"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "0:00:00",
+"3": "Female protagonists on Mega Drive, part 1",
+"4": "0:00:16"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "0:00:16",
+"3": "El Viento",
+"4": "0:28:22"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "0:28:38",
+"3": "Gleylancer (JP Intro)",
+"4": "0:09:16"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "0:37:54",
+"3": "Gleylancer (English Intro)",
+"4": "0:34:58"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "1:12:52",
+"3": "Alisia Dragoon",
+"4": "0:31:38"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "1:44:30",
+"3": "Twinkle Tale",
+"4": "0:25:07"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "2:09:37",
+"3": "Monster World IV",
+"4": "0:25:41"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "2:35:18",
+"3": "Panorama Cotton",
+"4": "0:18:28"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "2:53:46",
+"3": "Battle Golfer Yui (English Intro, only)",
+"4": "0:03:01"
+},
+{
+"0": "Mega Drive YM2612 -- MD Heroines",
+"1": "fi6nglD-yvQ",
+"2": "2:56:47",
+"3": "Battle Mania (Secret Intro, only",
+"4": "0:02:43"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "0:00:00",
+"3": "Mega Drive YM2612/OPN2",
+"4": "0:01:03"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "0:01:03",
+"3": "Battle Mania",
+"4": "0:24:05"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "0:25:08",
+"3": "Battle Mania: Daiginjō -- Japanese Intro",
+"4": "0:03:17"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "0:28:25",
+"3": "Battle Mania: Daiginjō -- English Intro (Trouble Shooter: Vintage)",
+"4": "0:05:01"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "0:33:26",
+"3": "Battle Mania: Daiginjō -- Boyfinn Equalized version",
+"4": "0:29:57"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "1:03:23",
+"3": "Gaiares -- English Intro",
+"4": "0:08:12"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "1:11:35",
+"3": "Zero Wing -- UK version intro",
+"4": "0:02:15"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "1:13:50",
+"3": "Gaiares -- Music",
+"4": "0:21:30"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "1:35:20",
+"3": "MUSHA Aleste",
+"4": "0:20:56"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "1:56:16",
+"3": "Undeadline",
+"4": "0:22:32"
+},
+{
+"0": "Mega Drive YM2612/OPN2",
+"1": "jxhdA_Rasu8",
+"2": "2:18:48",
+"3": "Pulseman",
+"4": "0:56:39"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "0:00:00",
+"3": "SNES/SFC S-DSP feat. Rolman",
+"4": "0:00:21"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "0:00:21",
+"3": "Super Castlevania IV",
+"4": "0:51:29"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "0:51:50",
+"3": "KiKi KaiKai: Nazo no Kuro Manto (Pocky & Rocky)",
+"4": "0:28:35"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "1:20:25",
+"3": "Super R-Type",
+"4": "0:21:08"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "1:41:33",
+"3": "Star Ocean",
+"4": "1:00:17"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "2:41:50",
+"3": "R-Type III",
+"4": "0:24:28"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "3:06:18",
+"3": "Rockman X (Megaman X)",
+"4": "0:33:38"
+},
+{
+"0": "SNES/SFC S-DSP",
+"1": "6iSFzcmMLjA",
+"2": "3:39:56",
+"3": "Assault Suits Valken (Cybernator)",
+"4": "0:26:13"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "0:00:00",
+"3": "PC Engine + IFU Setup",
+"4": "0:00:54"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "0:00:54",
+"3": "Final Soldier",
+"4": "0:21:52"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "0:22:46",
+"3": "PC Denjin/Air Zonk/PC電人",
+"4": "0:29:41"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "0:52:27",
+"3": "Snatcher CD-ROMantic Intro (Redbook Audio/CD-DA)",
+"4": "0:07:28"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "0:59:55",
+"3": "Snatcher CD-ROMantic Sound Test (Hu6280)",
+"4": "0:39:20"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "1:39:15",
+"3": "Snatcher CD-ROMantic Pilot Disc Boot/Demo(Redbook Audio/CD-DA)",
+"4": "0:02:15"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "1:41:30",
+"3": "Snatcher CD-ROMantic Pilot Disc Trailer (Redbook Audio/CD-DA)",
+"4": "0:09:43"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "1:51:13",
+"3": "GunHed/Blazing Lazers",
+"4": "0:22:33"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "2:13:46",
+"3": "Neutopia II Intro, First Tracks, crash due to adapter",
+"4": "0:07:32"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "2:21:18",
+"3": "Street Fighter II Champion Edition",
+"4": "0:28:07"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "2:49:25",
+"3": "Neutopia II Rest of tracks, played from TE",
+"4": "0:24:52"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "3:14:17",
+"3": "Bonus Castlevania: Rondo of Blood System Card Error",
+"4": "0:02:35"
+},
+{
+"0": "PC Engine Hu6280",
+"1": "eIxrxBGHtRg",
+"2": "3:16:52",
+"3": "Bonus Castlevania: Rondo of Blood Intro",
+"4": "0:05:33"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:00:00",
+"3": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"4": "0:00:44"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:00:44",
+"3": "Sega CD US BIOS 1.1.0",
+"4": "0:05:16"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:06:00",
+"3": "Sonic CD Intro US version",
+"4": "0:07:26"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:13:26",
+"3": "Mega CD JP BIOS 1.00",
+"4": "0:01:34"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:15:00",
+"3": "Sonic CD Intro JP version",
+"4": "0:03:04"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "0:18:04",
+"3": "Sonic CD PCM Sound Test JP version",
+"4": "0:45:59"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "1:04:03",
+"3": "Lunar Sega CD Intro US (CD-DA)",
+"4": "0:06:07"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "1:10:10",
+"3": "Lunar Mega CD Intro JP (CD-DA)",
+"4": "0:05:33"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "1:15:43",
+"3": "Loading my 1994 Lunar save game",
+"4": "0:01:57"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "1:17:40",
+"3": "Streets of Rage/Bare Knuckle",
+"4": "0:34:40"
+},
+{
+"0": "Sega Genesis + Sega CD Ricoh RF5C164 (315-5476A) PCM",
+"1": "pdJEh3onkHc",
+"2": "1:52:20",
+"3": "Shadow Dancer",
+"4": "0:22:39"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "0:00:00",
+"3": "CPS-II Q-Sound",
+"4": "0:01:28"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "0:01:28",
+"3": "Giga Wing",
+"4": "0:30:07"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "0:31:35",
+"3": "Street Fighter Alpha 3",
+"4": "1:00:38"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "1:32:13",
+"3": "Mega Man 2: The Power Fighters",
+"4": "0:54:31"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "2:26:44",
+"3": "Dungeons Dragons: Shadow Over Mystara (Intro only)",
+"4": "0:02:35"
+},
+{
+"0": "CPS-II Q-Sound (Capcom System II Arcade)",
+"1": "KCN98KIaB24",
+"2": "2:29:19",
+"3": "Super Street Fighter II Turbo",
+"4": "1:02:12"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "0:00:00",
+"3": "Neo Geo YM2610 (OPNB)",
+"4": "0:00:24"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "0:00:24",
+"3": "Twinkle Star Sprites",
+"4": "0:36:30"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "0:36:54",
+"3": "Viewpoint",
+"4": "0:23:38"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "1:00:32",
+"3": "Metal Slug",
+"4": "0:25:14"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "1:25:46",
+"3": "Neo Turf Masters",
+"4": "0:14:13"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "1:39:59",
+"3": "The Last Blade 2",
+"4": "0:31:51"
+},
+{
+"0": "Neo Geo YM2610 (OPNB)",
+"1": "r8eeqs7QjjA",
+"2": "2:11:50",
+"3": "The King of Fighters 98",
+"4": "0:58:09"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "0:00:00",
+"3": "Sega System 16 YM2151/OPM",
+"4": "0:00:19"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "0:00:19",
+"3": "Shinobi",
+"4": "0:15:06"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "0:15:25",
+"3": "Altered Beast",
+"4": "0:19:00"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "0:34:25",
+"3": "Wonder Boy III: Monster Lair",
+"4": "0:21:58"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "0:56:23",
+"3": "Golden Axe",
+"4": "0:22:10"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "1:18:33",
+"3": "ESWAT",
+"4": "0:10:57"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "1:29:30",
+"3": "Sega System 18 YM3438/OPN2C",
+"4": "0:04:17"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "1:33:47",
+"3": "Shadow Dancer",
+"4": "0:24:10"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "1:57:57",
+"3": "Alien Storm",
+"4": "0:24:21"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "2:22:18",
+"3": "Sega System 32 YM3438/OPN2C",
+"4": "0:00:02"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "2:22:20",
+"3": "Golden Axe II: The Revenge of Death Adder",
+"4": "0:22:04"
+},
+{
+"0": "Sega System 16/18/32 YM2151/OPM and YM3438/OPN2C",
+"1": "EMdlV6EqsEA",
+"2": "2:44:24",
+"3": "Spider-Man The video game",
+"4": "0:26:09"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:00:00",
+"3": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"4": "0:00:32"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:00:32",
+"3": "Sol Feace YM2151",
+"4": "0:05:10"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:05:42",
+"3": "Sol Feace MT-32",
+"4": "0:28:48"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:34:30",
+"3": "Gradius II YM2151",
+"4": "0:03:27"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:37:57",
+"3": "Gradius II MT-32 (test)",
+"4": "0:00:38"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:38:35",
+"3": "Gradius II SC-55 MK1",
+"4": "0:20:45"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "0:59:20",
+"3": "Cotton (with Keyboard LEDs)",
+"4": "0:22:32"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "1:21:52",
+"3": "Akumajou Dracula YM2151 (Loading and Demo)",
+"4": "0:06:26"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "1:28:18",
+"3": "Akumajou Dracula SC-55 (Loading and Demo)",
+"4": "0:05:50"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "CIYV_bOOkK4",
+"2": "1:34:08",
+"3": "Akumajou Dracula MT-32 (Full OST)",
+"4": "0:30:12"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "0:00:00",
+"3": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"4": "0:00:23"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "0:00:23",
+"3": "Mad Stalker Full Metal Forth",
+"4": "0:20:21"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "0:20:44",
+"3": "Cho Ren Sha X68000",
+"4": "0:27:49"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "0:48:33",
+"3": "Granada MT-32",
+"4": "0:30:14"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "1:18:47",
+"3": "Die Bahnwelt YM2151+MT32",
+"4": "0:44:50"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "2:03:37",
+"3": "Final Fight MT-32",
+"4": "0:23:44"
+},
+{
+"0": "X68000 YM2151/OPM + Roland MT-32/SC-55",
+"1": "0Y76PtZn2iM",
+"2": "2:27:21",
+"3": "Etoile Princesse SC-55",
+"4": "0:28:29"
+}
+]

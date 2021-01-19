@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta Http-Equiv="Cache-Control" Content="no-cache">
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=3, user-scalable=yes">
+		<meta name="description" content="Buscador de preguntas Artemio y Rolman">
+		<meta name="keywords" content="Musica, videojuegos, mister, juegos, clasicos, buscador, search, youtube, Artemio, Rolman">
+		<meta name="author" content="Lugerius">
+		<title>Platicando con Artemio y Rolman</title>
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="icon" sizes="192x192" href="images/artrol.jpg">
+		<link rel="apple-touch-icon-precomposed" href="images/artrol.jpg" />
+		<link rel="apple-touch-icon" href="images/artrol.jpg" />
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+        <script>
+            var data;
+            var time = 20000;
+            getCsvData();
+            setInterval(function(){ getCsvData() }, time);
+            
+            function getCsvData() {
+                $.ajax({
+                    type: "GET",  
+                    url: "listapreguntas.csv?"+Date.now(),
+                    dataType: "text",       
+                    success: function(response)  
+                    {
+                        data = $.csv.toArrays(response);
+                        generateHtmlTable(data);
+                    }   
+                });
+            }
+        
+            function generateHtmlTable(data) {
+                var html = '';
+                if(typeof(data[0]) === 'undefined') {
+                    return null;
+                } else {
+                    var iteration = 0;
+                    $.each(data, function( index, row ) {
+                        iteration++;
+                        if (iteration > Number($("#oldData").val())) {
+                            $("#oldData").val(Number($("#oldData").val())+1);
+                            console.log("row0"+iteration+"oldadata"+$("#oldData").val());
+                            html += '<tr><td>'+$("#oldData").val()+'</td>';
+                            $.each(row, function( index, colData ) {
+                                html += '<td>';
+                                html += colData;
+                                html += '</td>';
+                            });
+                            html += '</tr>';
+                            
+                        }
+                    });
+                    $( "#livechat").append(html);
+                    $( "#listapreguntas" ).table( "rebuild" );
+                }
+            }	
+        </script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" style="overflow:hidden;">
+				<h1>Platicando con Artemio y Rolman</h1>
+				<a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+			</div><!-- /header -->
+            <input type="hidden" id="oldData" value="0">
+			<div role="main" class="ui-content">
+                <div>
+                    <table data-role="table" id="listapreguntas" data-mode="columntoggle" class="ui-body-d ui-shadow table-stroke ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columnas a mostrar." data-column-popup-theme="a">
+                        <thead>
+                            <tr>
+                                <th data-priority="2">#</th>
+                                <th data-priority="3">Usuario</th>
+                                <th data-priority="1"> Pregunta</th>
+                                <th data-priority="4">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="livechat">
+                        </tbody>
+                    </table>
+                </div>
+			</div><!-- /content -->
+			<div data-role="panel" data-display="push" data-theme="b" id="nav-panel">
+				<ul data-role="listview">
+					<li data-icon="delete"><a href="#" data-rel="close">Cerrar</a></li>
+                    <li><a target="_blank" href="https://twitter.com/Artemio">Twitter</a></li>
+                    <li><a target="_blank" href="http://youtube.com/c/ArtemioUrbina">Youtube</a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/artemio.urbina/">Instagram</a></li>
+                    <li><a target="_blank" href="https://www.patreon.com/aurbina">Patreon</a></li>
+                    <li><a target="_blank" href="https://ko-fi.com/artemio">Ko-fi</a></li>
+				</ul>
+			</div><!-- /panel -->	
+			<div data-role="footer" data-position="fixed">
+				<h4>Comunidad ScoreVG</h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+	</body>
+</html>

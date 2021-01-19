@@ -20,11 +20,21 @@ $(function() {
 	$("#playerContainer").on("tap",function(){
 		$("#autocomplete").fadeOut(200);
 	});
+
+	// Defino donde buscar (Preguntas o noContext)
+	var tipocue = "artrol";
+	$("input[type=radio][name=tipocue]").change(function() {
+		if (this.value == "artrol") {
+			tipocue = "artrol";
+		}else if (this.value == "noctx") {
+			tipocue = "noctx";
+		}
+	});
 		
 	$( "#autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
 		var ul = $( this );
 		var query = $("#suggest").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");	// elimina acentos y tildes
-		var dbase = 'js/artrol.json?nocache=' + (new Date()).getDay(); // obtiene el archivo json cada día
+		var dbase = 'js/'+tipocue+'.json?nocache=' + (new Date()).getDay(); // obtiene el archivo json cada día
 		var episodestr = ['ep','episodio','ep-','episodio-'];	// Para búsqueda por episodio
 		var html = "";
 		var results = 0; // contador de resultados
@@ -192,7 +202,7 @@ function onYouTubeIframeAPIReady() {
 		 	'onStateChange': onPlayerStateChange
 		}
 
-	});merca
+	});
 }
 
 
