@@ -1,11 +1,27 @@
-/*
-*
-* YoutubeSearch
-* Desarrollado: Luis Mendoza @lugerius
-* js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
-* Documentación de api de youtube https://developers.google.com/youtube/iframe_api_reference
-*
-*/
+/* YoutubeSearch "Platicando con Artemio y Rolman"
+https://www.youtube.com/c/ArtemioUrbina/
+
+    Copyright (C) 2020-2021  Luis G. Mendoza @lugerius
+
+    This file is part of the YoutubeSearch "Platicando con Artemio y Rolman"
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    
+js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
+Documentación de api de youtube https://developers.google.com/youtube/iframe_api_reference */
+
 
 $(function() {
 	flushPlaylist();
@@ -25,8 +41,10 @@ $(function() {
 	var tipocue = "artrol";
 	$("input[type=radio][name=tipocue]").change(function() {
 		if (this.value == "artrol") {
+			$("#suggest").attr('placeholder', 'Buscar tema o episodio (ep#)');
 			tipocue = "artrol";
 		}else if (this.value == "noctx") {
+			$("#suggest").attr('placeholder', 'Buscar juego');
 			tipocue = "noctx";
 		}
 	});

@@ -4,6 +4,8 @@ https://artemiorolman.us.to
 Buscador de preguntas de los programas de "Platicando con Artemio y Rolman"
 https://www.youtube.com/c/ArtemioUrbina/
 
+Se integró además la búsqueda de música de los programas NoContextSynth
+
 Permite creación de playlist de preguntas
 
 Está basado en el buscador de ScoreVG https://github.com/lugerius/ScoreVGSearch y adaptado para la API de Youtube.
@@ -13,6 +15,8 @@ La lista de preguntas se obtiene directamente del indexado de las mismas en los 
 
 Hay un archivo en Google drive que tiene la lista completa de las preguntas indexadas
 https://docs.google.com/spreadsheets/d/1sC5BDaQklPzsLZiDoz-mum9w14a-7Z-dOeE3G1IfpXA/edit?usp=sharing
+
+Livechat captura las preguntas del chat del stream en vivo, tanto de Youtube como del espejo en Twitch
 
 
 # Para usarlo como aplicación en dispositivos móviles.
