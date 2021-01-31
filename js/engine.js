@@ -44,7 +44,7 @@ $(function() {
 			$("#suggest").attr('placeholder', 'Buscar tema o episodio (ep#)');
 			tipocue = "artrol";
 		}else if (this.value == "noctx") {
-			$("#suggest").attr('placeholder', 'Buscar juego');
+			$("#suggest").attr('placeholder', 'Buscar juego o synth');
 			tipocue = "noctx";
 		}
 	});
@@ -72,7 +72,7 @@ $(function() {
 					var topic		= query.split(" ");
 					var duration 	= timeInS(val["4"]);
 					var end 		= parseInt(time)+parseInt(duration);
-					if (checkTopics(topic, question) || episode.includes(query) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode || qnoaccent.includes(query)) {
+					if (checkTopics(topic, question) || episode.toLowerCase().includes(query) || checkTopics(topic, qnoaccent) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode) {
 						var dataresult = {uri, time, end, question};
 						results++;
 						html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
