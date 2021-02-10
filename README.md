@@ -1,4 +1,5 @@
 # ArtemioRolmanYoutube
+
 https://artemiorolman.us.to
 
 Buscador de preguntas de los programas de "Platicando con Artemio y Rolman"
@@ -6,7 +7,17 @@ https://www.youtube.com/c/ArtemioUrbina/
 
 Se integró además la búsqueda de música de los programas NoContextSynth
 
-Permite creación de playlist de preguntas
+Permite creación de playlist.
+
+Se pueden mandar búsquedas por URI directamente con el formato siguiente
+
+https://artemiorolman.us.to/?q=patron1
+
+o por múltiples patrones separados por %2B equivalente al símbolo de +
+
+https://artemiorolman.us.to/?q=patron1%2Bpatron2
+
+La búsqueda múltiple también se puede hacer desde el input de búsqueda separando las palabras con un signo de +
 
 Está basado en el buscador de ScoreVG https://github.com/lugerius/ScoreVGSearch y adaptado para la API de Youtube.
 Al igual que el buscador de ScoreVG, requiere de jquery y jquerymobile.
