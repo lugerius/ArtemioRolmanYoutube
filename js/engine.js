@@ -22,7 +22,6 @@ https://www.youtube.com/c/ArtemioUrbina/
 js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
 Documentación de api de youtube https://developers.google.com/youtube/iframe_api_reference */
 
-
 $(function() {
 	flushPlaylist();
 	$("#suggest").focus(function(){
@@ -49,16 +48,16 @@ $(function() {
 		}
 	});
 		
-	$( "#autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
+	$("#autocomplete").on("filterablebeforefilter", function ( e, data ) {
 		var ul = $( this );
-		var query = $("#suggest").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");	// elimina acentos y tildes
 		var dbase = 'js/'+tipocue+'.json?nocache=' + (new Date()).getDay(); // obtiene el archivo json cada día
 		var episodestr = ['ep','episodio','ep-','episodio-'];	// Para búsqueda por episodio
 		var html = "";
 		var results = 0; // contador de resultados
 		var allresults = [];
 		ul.html( "" );
-		if ( query && query.length > 2 ) {	// A partir de dos caracteres inicia busqueda 
+		var multi = $("#suggest").val().split("+"); // busqueda multiple separada por signo +
+		if ( multi[0] && multi[0].length > 2 ) {	// Busco si hay un elemento de busqueda y a partir de dos caracteres inicia busqueda 
 			$("#autocomplete").fadeIn(50);
 			ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
 			ul.listview( "refresh" );
@@ -69,15 +68,21 @@ $(function() {
 					var time 		= timeInS(val["2"]);
 					var question	= val["3"].toLowerCase();
 					var qnoaccent	= question.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-					var topic		= query.split(" ");
 					var duration 	= timeInS(val["4"]);
 					var end 		= parseInt(time)+parseInt(duration);
-					if (checkTopics(topic, question) || episode.toLowerCase().includes(query) || checkTopics(topic, qnoaccent) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode) {
-						var dataresult = {uri, time, end, question};
-						results++;
-						html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
-						allresults.push(dataresult);
-					}
+					$.each(multi, function(index, value){ // patrones de busqueda 
+						var query = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // elimina acentos y tildes
+						var topic = query.split(" ");
+						if (query.length > 2) {
+							if (checkTopics(topic, question) || episode.toLowerCase().includes(query) || checkTopics(topic, qnoaccent) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode) {
+								var dataresult = {uri, time, end, question};
+								results++;
+								html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
+								allresults.push(dataresult);
+							}
+						}
+					});
+					
 				})
 				var alltoplist = "";
 				jsonresult = JSON.stringify(allresults);
@@ -97,10 +102,20 @@ $(function() {
 	$("#resetP").click(function(){
 		flushPlaylist();
 	});
+
+	// Búsqueda por URI
+
+	let params = new URLSearchParams(document.location.search.substring(1)); 
+	let pattern = params.get("q");
+	if (pattern != "") {
+		$("#suggest").val(pattern);
+		$("#autocomplete").trigger("filterablebeforefilter");
+	}
+
 });
 
 
-// Búsqueda por múltiples palabras
+// Búsqueda por múltiples palabras (separadas por espacio)
 
 function checkTopics(arr, target){
 	return arr.every(i => target.includes(i));

@@ -22,9 +22,9 @@
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #	
 #
-#	livechat/livechat.py: 	Obtiene las preguntas de un chat en vivo de una transmisión de Youtube con espejo en Twitch
+#	livechat/livechat.py:	Obtiene las preguntas de un chat en vivo de una transmisión de Youtube con espejo en Twitch
 #							Se ejecuta del lado del servidor y solamente genera un archivo CSV que después es leído
-# 							por livechat/index.html. En el servidor cambiar los permisos de este archivo a 0700
+#							por livechat/index.html. En el servidor cambiar los permisos de este archivo a 0700
 #	
 # 	REQUISITOS:
 #
@@ -37,7 +37,7 @@
 #
 # 	USO:
 #
-#	livechat.py [YOUTUBECHANNELID] [GOOGLEAPIKEY] [CAPTURESTRING] [\"CAPTURESTRING\"] [*TWITCHCHANNEL]
+#	livechat.py [YOUTUBECHANNELID] [GOOGLEAPIKEY] [CAPTURESTRING] ["CAPTURESTRING"] [*TWITCHCHANNEL]
 #
 #	[*TWITCHCHANNEL] - No es obligatorio si solo se quiere capturar de youtube
 
@@ -161,8 +161,8 @@ def listen_message(delayTime, liveChat, apiKey):
 
 	while True:
 		for dataMessage in get_chat(liveChat, apiKey):
-			pregunta = dataMessage["snippet"]["displayMessage"].lower()
-			if pregunta.count(argv[3]) > 0:
+			query = dataMessage["snippet"]["displayMessage"].lower()
+			if query.count(argv[3]) > 0:
 				publishedAt = dp.parse(dataMessage["snippet"]["publishedAt"])
 				newTime = publishedAt.strftime("%s")
 				if lastRead < int(newTime):
@@ -186,10 +186,10 @@ def listen_message(delayTime, liveChat, apiKey):
 
 def remove_quotes(originalstring):
 	banned = {	'\"': '-',
-					'\'': '-',
-					'<': '&lt;',
-					'>': '&gt;',
-					'|': ''	}
+				'\'': '-',
+				'<': '&lt;',
+				'>': '&gt;',
+				'|': ''	}
 	newString = originalstring.replace('&',"&amp;")
 
 	for oldItem, newItem in banned.items():
