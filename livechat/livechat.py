@@ -41,7 +41,7 @@
 #
 #	* OPCIONALES
 #	[*TWITCHCHANNEL] - No es obligatorio si solo se quiere capturar de youtube
-#	[*BROADCASTID] - Si se cuenta con el Id de la transmisión de youtube
+#	[*BROADCASTID] - Solo usar cuando no se escuentra de manera automática el id de transmisión de youtube
 
 
 import json
@@ -219,7 +219,7 @@ if __name__ == "__main__":
 	if len(argv)<4:
 		print("Use: livechat.py [YOUTUBETCHANNELID] [GOOGLEAPIKEY] [\"CAPTURESTRING\"] [*TWITCHCHANNEL] [*BROADCASTID] \n \
 * OPCIONALES \n[*TWITCHCHANNEL] - No es obligatorio si solo se quiere capturar de youtube \n\
-[*BROADCASTID] - Si se cuenta con el Id de la transmisión de youtube")
+[*BROADCASTID] - solo usar cuando no se encuentre de manera automática el Id de la transmisión de youtube")
 		finish()
 	else:
 		channel = argv[1]
