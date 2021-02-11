@@ -30,16 +30,18 @@
 #
 #	Requiere de una api key de google que se obtiene en https://console.developers.google.com/apis/api/youtube.googleapis.com
 #	Requiere que se obtenga el id del canal de Youtube
-# 	Requiere de las librerías de python json, time, requests, dateutil, sys, datetime, os
+# 	Requiere de las librerías de python json, time, requests, dateutil, sys, datetime, os, random
 #	Para la captura del chat de Twitch se requiere del archivo twitchchat.js en el mismo directorio de trabajo
 #	Para automatizar la búsqueda de streams en vivo del canal de youtube, se debe agregar la ejecución de este script a un cronjob en el servidor
 #	Ej. ./livechat.py UCEh5UPBv0alseI62OJhnKow GOOGLEAPIKEY "#pregunta" artemiourbina 
 #
 # 	USO:
 #
-#	livechat.py [YOUTUBECHANNELID] [GOOGLEAPIKEY] [CAPTURESTRING] ["CAPTURESTRING"] [*TWITCHCHANNEL]
+#	livechat.py [YOUTUBECHANNELID] [GOOGLEAPIKEY] ["CAPTURESTRING"] [*TWITCHCHANNEL] [*BROADCASTID]
 #
+#	* OPCIONALES
 #	[*TWITCHCHANNEL] - No es obligatorio si solo se quiere capturar de youtube
+#	[*BROADCASTID] - Si se cuenta con el Id de la transmisión de youtube
 
 
 import json
@@ -47,6 +49,7 @@ import time
 import requests
 import os
 import subprocess
+import random
 import dateutil.parser as dp
 import re
 from sys import argv
@@ -54,36 +57,35 @@ from datetime import date
 
 os.chdir(os.path.dirname(argv[0]))
 
-""" # 
+#
 #	Función para saber si el canal está transmitiendo en vivo
 #
 
 def get_broadcastid(channelId, apiKey):
-	if len(argv) == 5: # Si conocemos el id del stream en vivo
-		return argv[4] 
+	videoId = requests.get("https://www.googleapis.com/youtube/v3/search?eventType=live&part=id&channelId="+channelId+"&type=video&key="+apiKey)
+	data = videoId.json()
+
+	if len(data["items"]) > 0:
+		print("Hay transmision en vivo por API")
+		return data["items"][0]["id"]["videoId"]
 	else:
-		videoId = requests.get("https://www.googleapis.com/youtube/v3/search?eventType=live&part=id&channelId="+channelId+"&type=video&key="+apiKey)
-		data = videoId.json()
-		try:
-			return data["items"][0]["id"]["videoId"]
-		except:
-			print("No existe transmisión en vivo")
-			finish() """
+		print("No existe transmisión en vivo por API")
+		finish()
 
 # 
 #	Función alternativa para saber si el canal está transmitiendo en vivo, no requiere apikey (No consume cuota)
 #
 
-def get_altbroadcastid(channelId):
+def get_altbroadcastid(channelId, api=None):
 	ytfile = requests.get("https://www.youtube.com/channel/"+channelId+"/live")
 	match = re.search('"videoId":"(.*)","broadcastId"', ytfile.text)
 
 	if match:
 		videoid = match.group(1)
-		print("Livestream encontrado VideoID: "+videoid)
+		print("Livestream encontrado VideoID por DL: "+videoid)
 		return videoid
 	else:
-		print("No hay transmision en vivo")
+		print("No hay transmision en vivo por DL")
 		finish()
 
 
@@ -147,7 +149,7 @@ twpid = 0
 def listen_message(delayTime, liveChat, apiKey):
 	global twpid
 
-	if len(argv) == 5:
+	if len(argv) >= 5:
 		twitchlive = ['node', 'twitchchat.js', argv[4], argv[3]]
 		nodechild = subprocess.Popen(twitchlive)
 		twpid = nodechild.pid
@@ -215,7 +217,9 @@ if __name__ == "__main__":
 	open(runningPid, "w").write(pid)
 
 	if len(argv)<4:
-		print("Use: livechat.py [YOUTUBETCHANNELID] [GOOGLEAPIKEY] [\"CAPTURESTRING\"] [*TWITCHCHANNEL]")
+		print("Use: livechat.py [YOUTUBETCHANNELID] [GOOGLEAPIKEY] [\"CAPTURESTRING\"] [*TWITCHCHANNEL] [*BROADCASTID] \n \
+* OPCIONALES \n[*TWITCHCHANNEL] - No es obligatorio si solo se quiere capturar de youtube \n\
+[*BROADCASTID] - Si se cuenta con el Id de la transmisión de youtube")
 		finish()
 	else:
 		channel = argv[1]
@@ -223,7 +227,12 @@ if __name__ == "__main__":
 		delayTime = 60
 
 	try:
-		vidid = get_altbroadcastid(channel)
+		broadcastIdChoice = random.choice([get_altbroadcastid, get_broadcastid])
+		if len(argv) == 6: # Si conocemos el id del stream en vivo
+			print("Livestream en: "+argv[5])
+			vidid = argv[5]
+		else:
+			vidid = broadcastIdChoice(channel, key)
 		liveChat = get_livechatid(vidid, key)
 		listen_message(delayTime, liveChat, key)
 	except Exception as e:
