@@ -19,6 +19,8 @@ https://artemiorolman.us.to/?q=patron1%2Bpatron2
 
 La búsqueda múltiple también se puede hacer desde el input de búsqueda separando las palabras con un signo de +
 
+El usar "q" en URI hace las búsquedas en los programas de Preguntas de Artemio y Rolman, mientras que al usar "m" realiza la busqueda en los episodios de NoContextSynth 
+
 Está basado en el buscador de ScoreVG https://github.com/lugerius/ScoreVGSearch y adaptado para la API de Youtube.
 Al igual que el buscador de ScoreVG, requiere de jquery y jquerymobile.
 

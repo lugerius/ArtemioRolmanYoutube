@@ -107,11 +107,18 @@ $(function() {
 
 	let params = new URLSearchParams(document.location.search.substring(1)); 
 	let pattern = params.get("q");
-	if (pattern != "") {
+	let qmusic = params.get("m");
+	if (pattern != null) {
 		$("#suggest").val(pattern);
 		$("#autocomplete").trigger("filterablebeforefilter");
+	} else if (qmusic != null) {
+		tipocue = "noctx";
+		$("#suggest").val(qmusic);
+		$("input[type=radio][name=tipocue]").filter('[value="artrol"]').prop("checked", false ).checkboxradio("refresh");
+		$("input[type=radio][name=tipocue]").filter('[value="noctx"]').prop("checked", true ).checkboxradio("refresh");
+		$("#autocomplete").trigger("filterablebeforefilter");
 	}
-
+	
 });
 
 
