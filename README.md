@@ -13,7 +13,7 @@ Se pueden mandar búsquedas por URI directamente con el formato siguiente
 
 https://artemiorolman.us.to/?q=patron1
 
-o por múltiples patrones separados por %2B equivalente al símbolo de +
+o por múltiples patrones separados por %2B equivalente al símbolo de + (suma los resultados donde aparezcan los patrones) o por %20 equivalente a espacio " " (muestra los resultados solo donde todos los patrones se cumplan en una sola pregunta). 
 
 https://artemiorolman.us.to/?q=patron1%2Bpatron2
 
@@ -22,7 +22,6 @@ La búsqueda múltiple también se puede hacer desde el input de búsqueda separ
 El usar "q" en URI hace las búsquedas en los programas de Preguntas de Artemio y Rolman, mientras que al usar "m" realiza la busqueda en los episodios de NoContextSynth 
 
 Está basado en el buscador de ScoreVG https://github.com/lugerius/ScoreVGSearch y adaptado para la API de Youtube.
-Al igual que el buscador de ScoreVG, requiere de jquery y jquerymobile.
 
 La lista de preguntas se obtiene directamente del indexado de las mismas en los episodios de Youtube y se meten a un archivo JSON (js/artrol.json) con el episodio, los timecodes y la duración de cada una.
 
