@@ -22,6 +22,13 @@ https://www.youtube.com/c/ArtemioUrbina/
 js/engine.js Contiene el motor de busqueda y las funciones necesarias para generar playlist
 Documentación de api de youtube https://developers.google.com/youtube/iframe_api_reference */
 
+
+var params = new URLSearchParams(document.location.search.substring(1));
+if (params.get("m") != null || params.get("q") != null) {
+	var qmusic = $('<div>').text(params.get("m")).html();
+	var pattern = $('<div>').text(params.get("q")).html();
+}
+
 $(function() {
 	flushPlaylist();
 	$("#suggest").focus(function(){
@@ -87,7 +94,7 @@ $(function() {
 				var alltoplist = "";
 				jsonresult = JSON.stringify(allresults);
 				if ( html != "") {
-					alltoplist = '<li data-theme="b"><a href="#" onclick="setAllToPlist();" style="text-align:center;">Agregar los '+results+' resultados a Playlist</a></li>';
+					alltoplist = '<li data-theme="b"><a href="#" id="playall" onclick="setAllToPlist();" style="text-align:center;">Agregar los '+results+' resultados a Playlist</a></li>';
 				}
 				ul.html( alltoplist + html );
 				ul.listview( "refresh" );
@@ -105,21 +112,29 @@ $(function() {
 
 	// Búsqueda por URI
 
-	let params = new URLSearchParams(document.location.search.substring(1)); 
-	let pattern = params.get("q");
-	let qmusic = params.get("m");
 	if (pattern != null) {
 		$("#suggest").val(pattern);
 		$("#autocomplete").trigger("filterablebeforefilter");
+		waitElementRender();
 	} else if (qmusic != null) {
 		tipocue = "noctx";
 		$("#suggest").val(qmusic);
 		$("input[type=radio][name=tipocue]").filter('[value="artrol"]').prop("checked", false ).checkboxradio("refresh");
 		$("input[type=radio][name=tipocue]").filter('[value="noctx"]').prop("checked", true ).checkboxradio("refresh");
 		$("#autocomplete").trigger("filterablebeforefilter");
+		waitElementRender();
 	}
-	
 });
+
+// Espera a que se forme el elemento para luego agregar a playlist, para cuando se hacen búsquedas por URI
+
+function waitElementRender() { 
+	if (!$("#playall").size()) {
+		window.requestAnimationFrame(waitElementRender);
+	} else {
+		setAllToPlist();
+	}
+}
 
 
 // Búsqueda por múltiples palabras (separadas por espacio)
@@ -166,7 +181,7 @@ function setPlaylist (uri, time, end, question) {
 
 // Agregar todos los elementos de una búsqueda a la playlist
 
-var jsonresult = "";
+var jsonresult = null;
 function setAllToPlist () {
 	var jsonobject = JSON.parse(jsonresult);
 	$.each( jsonobject, function( key, value ) {
@@ -189,12 +204,13 @@ function showDuration(){
 
 //Inicializa la reproducción de la playlist
 
-function startPlaylist (numcue) {
+function startPlaylist(numcue) {
 	cancelStop();
 	stopVideo();
 	var currentplay = parseInt(player.getPlaylistIndex())+1;
-	$("#line"+currentplay+"").css({"background-color":""}); // elimina el estilo resalatado de la reproducción anterior
+	$("#line"+currentplay+"").css({"background-color":"", "color":""}); // elimina el estilo resalatado de la reproducción anterior
 	player.cuePlaylist(playlist, parseInt(numcue)-1);
+	//player.loadPlaylist(playlist, parseInt(numcue)-1);
 	player.playVideoAt(parseInt(numcue)-1);
 	startP = 1;
 	$("#autocomplete").fadeOut(200);
@@ -228,21 +244,34 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
-	player = new YT.Player('player', {
-		height: '100%',
-		width: '100%',
-		videoId: 'O4eOYFkVb-g',
-		playerVars: {
-			rel: '0',
-			color: 'white',
-			controls: '0',
-			disablekb: '1'
- 		},
-		events: {
-		 	'onStateChange': onPlayerStateChange
-		}
+	var jsonFile = 'js/artrol.json?nocache=' + (new Date()).getDay(); // recarga el archivo json cada día
+	var lastEpisode = "";
+	$.getJSON( jsonFile, function( data ){
+		player = new YT.Player('player', {
+			height: '100%',
+			width: '100%',
+			videoId: data[0][1], // Obtengo el Id del video más reciente
+			playerVars: {
+				rel: '0',
+				color: 'white',
+				controls: '0',
+				disablekb: '1'
+			 },
+			events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			}
+		});
+	});	
+}
 
-	});
+function onPlayerReady(event) {
+	// Cuando se hacen busquedas por URI, inicializa la reproducción automática.
+	if (pattern != null || qmusic != null) {
+		if (playlist.length > 0) {
+			startPlaylist(1);
+		}
+	}
 }
 
 
@@ -258,7 +287,7 @@ function onPlayerStateChange(event) {
 			if ((event.target.getPlaylist()).length !== playlist.length) {
 				startPlaylist(parseInt(currentindex)+2);
 			} else {
-				$("#line"+parseInt(currentindex+1)+"").css({"background-color":""}); // quito resaltado al continuar con nuevo elemento de playlist
+				$("#line"+parseInt(currentindex+1)+"").css({"background-color":"", "color":""}); // quito resaltado al continuar con nuevo elemento de playlist
 				event.target.nextVideo();
 				startP = 1;	
 			}		
@@ -270,7 +299,7 @@ function onPlayerStateChange(event) {
 	} else if (startP == 1 && event.data == YT.PlayerState.PLAYING) {
 		$("#autor").html(playlistdata[currentindex].question).show();
 		$("#autor").fadeOut((parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
-		$("#line"+parseInt(currentindex+1)+"").css({"background-color":"#ddd"}); // resalto renglon en reproducción en playlist
+		$("#line"+parseInt(currentindex+1)+"").css({"background-color":"#171717", "color":"#ff1100"}); // resalto renglon en reproducción en playlist
 		startP = 2;
 		event.target.seekTo(playlistdata[currentindex].time);
 	} else if (startP != 0 && typeof stoptime !== 'undefined' && event.data == YT.PlayerState.PAUSED) {
@@ -280,7 +309,7 @@ function onPlayerStateChange(event) {
 		stoptime.resume();
 		startP = 2;
 	}
-	//console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP);	
+	console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP);	
 }
 
 

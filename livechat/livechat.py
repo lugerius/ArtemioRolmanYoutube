@@ -166,15 +166,15 @@ def listen_message(delayTime, liveChat, apiKey):
 			query = dataMessage["snippet"]["displayMessage"].lower()
 			if query.count(argv[3]) > 0:
 				publishedAt = dp.parse(dataMessage["snippet"]["publishedAt"])
-				newTime = publishedAt.strftime("%s")
-				if lastRead < int(newTime):
+				newTime = publishedAt.strftime("%s.%f")
+				if lastRead < float(newTime):
 					outq = '"YT-'+remove_quotes(dataMessage["authorDetails"]["displayName"])+ \
 						   '","'+remove_quotes(dataMessage["snippet"]["displayMessage"])+ \
 						   '","'+dataMessage["snippet"]["publishedAt"]+'"\n'
 					csvFile = open(filePath, "a")
 					csvFile.write(outq)
 					csvFile.close()
-					lastRead = int(newTime)
+					lastRead = float(newTime)
 
 		try:
 			time.sleep(delayTime)

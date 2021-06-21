@@ -22,7 +22,7 @@ https://www.youtube.com/c/ArtemioUrbina/
  css/main.css Contiene los Estilos personalizados */
 
 
-.alltext {
+ .alltext {
     white-space: normal !important;
     word-wrap:break-word;
     overflow-wrap: break-word;
@@ -65,14 +65,12 @@ img {
 .movie-list tbody td .ui-table-cell-label {
     text-transform: uppercase;
     font-size: .7em;
-    color: rgba(0,0,0,0.5);
+    color: #f1f1f1
     font-weight: normal;
 }
 /* White bg, large blue text for rank and title */
 .movie-list tbody th {
     font-size: 1.2em;
-    background-color: #fff;
-    color: #77bbff;
     text-align: center;
 }
 /*  Add a bit of extra left padding for the title */
@@ -86,6 +84,7 @@ img {
 }
 .movie-list tbody th,
 .movie-list tbody td {
+    text-shadow: none;
     border-bottom: 1px solid #e6e6e6; /* non-RGBA fallback  */
     border-bottom: 1px solid rgba(0,0,0,.05);
 }
@@ -104,7 +103,7 @@ img {
         font-size: 0.9em;
         line-height: 110%;
         padding: .5em .5em;
-        background-color: #fff;
+        background-color: #eee;
         color: #77bbff;
         -moz-box-shadow: 0 1px 6px rgba(0,0,0,.1);
         -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.1);
