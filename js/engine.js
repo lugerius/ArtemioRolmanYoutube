@@ -24,8 +24,10 @@ Documentación de api de youtube https://developers.google.com/youtube/iframe_ap
 
 
 var params = new URLSearchParams(document.location.search.substring(1));
-if (params.get("m") != null || params.get("q") != null) {
+if (params.get("m") != null) {
 	var qmusic = $('<div>').text(params.get("m")).html();
+} 
+if (params.get("q") != null) {	
 	var pattern = $('<div>').text(params.get("q")).html();
 }
 
