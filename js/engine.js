@@ -24,6 +24,7 @@ Documentación de api de youtube https://developers.google.com/youtube/iframe_ap
 
 
 var params = new URLSearchParams(document.location.search.substring(1));
+var startP = 100; // inicializo los estados del reproductor de youtube
 if (params.get("m") != null) {
 	var qmusic = $('<div>').text(params.get("m")).html();
 } 
@@ -85,9 +86,11 @@ $(function() {
 						if (query.length > 2) {
 							if (checkTopics(topic, question) || episode.toLowerCase().includes(query) || checkTopics(topic, qnoaccent) || query == episodestr[0]+episode || query == episodestr[1]+episode || query == episodestr[2]+episode || query == episodestr[3]+episode) {
 								var dataresult = {uri, time, end, question};
-								results++;
-								html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
-								allresults.push(dataresult);
+								if(!allresults.find(obj => obj.uri+obj.time == uri+time)){ // elimino resultados repetidos
+									results++;
+									html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
+									allresults.push(dataresult);
+								}
 							}
 						}
 					});
@@ -207,14 +210,13 @@ function showDuration(){
 //Inicializa la reproducción de la playlist
 
 function startPlaylist(numcue) {
+	console.log("clickbuttonplist");
 	cancelStop();
 	stopVideo();
+	startP = 1;
 	var currentplay = parseInt(player.getPlaylistIndex())+1;
 	$("#line"+currentplay+"").css({"background-color":"", "color":""}); // elimina el estilo resalatado de la reproducción anterior
 	player.cuePlaylist(playlist, parseInt(numcue)-1);
-	//player.loadPlaylist(playlist, parseInt(numcue)-1);
-	player.playVideoAt(parseInt(numcue)-1);
-	startP = 1;
 	$("#autocomplete").fadeOut(200);
 }
 
@@ -281,45 +283,73 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
 	var currentindex = event.target.getPlaylistIndex();
-	if (startP == 2 && event.data == YT.PlayerState.CUED) {
-		if (currentindex == playlist.length-1) {
-			delete startP;
+	const noPlaying = -1;
+	//const ended = 0;
+	const playing = 1;
+	const paused = 2;
+	//const buffer = 3;
+	const cued = 5;
+	
+	console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP+" stoptime="+(parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
+
+	if (startP == 0) { // Cuando acaba de reproducir un item de la playlist
+		if (currentindex == playlist.length-1) { // ultimo de la playlist
+			console.log("ultimo"+currentindex+" - "+(playlist.length-1));
+			startP = 100;
 			event.target.stopVideo();
 		} else {
-			if ((event.target.getPlaylist()).length !== playlist.length) {
-				startPlaylist(parseInt(currentindex)+2);
-			} else {
+			if (player.getPlayerState() == cued || player.getPlayerState() == noPlaying) {
+				console.log("nextvideo");
 				$("#line"+parseInt(currentindex+1)+"").css({"background-color":"", "color":""}); // quito resaltado al continuar con nuevo elemento de playlist
 				event.target.nextVideo();
 				startP = 1;	
-			}		
+			}
 		}
-	} else if (startP == 2 && event.data == YT.PlayerState.PLAYING) {
-		stoptime = new Timer(stopVideo, (parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
-	} else if (startP == 1 && (event.data == -1 || event.data == 5) ) {
+	}
+
+	if (startP == 1) { // Cuando se acaba de agregar un cue en playlist
 		event.target.playVideo();
-	} else if (startP == 1 && event.data == YT.PlayerState.PLAYING) {
-		$("#autor").html(playlistdata[currentindex].question).show();
-		$("#autor").fadeOut((parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
-		$("#line"+parseInt(currentindex+1)+"").css({"background-color":"#171717", "color":"#ff1100"}); // resalto renglon en reproducción en playlist
-		startP = 2;
-		event.target.seekTo(playlistdata[currentindex].time);
-	} else if (startP != 0 && typeof stoptime !== 'undefined' && event.data == YT.PlayerState.PAUSED) {
+		if (player.getPlayerState() == playing) {
+			$("#autor").html(playlistdata[currentindex].question).show();
+			$("#autor").fadeOut((parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000);
+			$("#line"+parseInt(currentindex+1)+"").css({"background-color":"#171717", "color":"#ff1100"}); // resalto renglon en reproducción en playlist
+			event.target.seekTo(playlistdata[currentindex].time);
+			startP = 2;
+		} 
+	}
+	
+	if (startP == 2) { // Cunado se está reproduciendo un item de la playlist
+		if (player.getPlayerState() == playing) {
+			if (typeof stoptime !== 'undefined') {
+				stoptime.clear();
+			}
+			stoptime = new Timer(stopVideo, (parseInt(playlistdata[currentindex].end)-parseInt(playlistdata[currentindex].time))*1000); // temporizador para detener la pregunta
+		}
+		if (player.getPlayerState() == noPlaying) { // Evita errores cuando YT entra en buffer o en estado de noPlaying
+			console.log("Buffering...");
+			startP = 1;	
+		}
+				
+	}  
+		
+	if (startP != 0 && typeof stoptime !== 'undefined' && event.data == paused) { // Cuando se pone en pausa el video, el temporizador tambien se pone en pausa
 		stoptime.pause();
 		startP = 3;
-	} else if (startP == 3 && YT.PlayerState.PLAYING) {
+	}
+
+	if (startP == 3 && event.data == playing) { // Reinicia el temporizador cuando se quita la pausa del video
 		stoptime.resume();
 		startP = 2;
-	}
-	console.log("playerstate "+player.getPlayerState()+"- index "+player.getPlaylistIndex()+"- startP="+startP);	
+	} 
 }
 
 
 // Detener reproducción.
 
-function stopVideo(){
+function stopVideo() {
 	if (typeof player !== 'undefined') {
 		player.stopVideo();
+		startP = 0;
 	}
 }
 
