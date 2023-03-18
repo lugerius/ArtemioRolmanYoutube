@@ -73,7 +73,7 @@ $(function() {
 			ul.listview( "refresh" );
 			$.getJSON( dbase, function( data ) {	// Muestra resultados de búsqueda
 				$.each ( data , function(key, val){
-					var episode 	= val["0"];
+					var episode 	= val["0"].toLowerCase();
 					var uri 		= val["1"];
 					var time 		= timeInS(val["2"]);
 					var question	= val["3"].toLowerCase();
