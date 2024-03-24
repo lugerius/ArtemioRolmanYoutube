@@ -93,6 +93,12 @@ $(function() {
 								}
 							}
 						}
+						if (query == "allq"){ // Lista de todas las preguntas,
+							var dataresult = {uri, time, end, question};
+							results++;
+							html += '<li><a href="#" class="alltext" onclick="setPlayer(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">'+results+' Ep'+episode+' - '+question.toLowerCase()+' <span class="ui-li-count">'+duration+'s</span></a><a href="#AddPlaylist" data-rel="popup" data-transition="slide" onclick="setPlaylist(\''+uri+'\', \''+time+'\', \''+end+'\', \''+question+'\');">Agregar a Playlist</a></li>';
+							allresults.push(dataresult);	
+						}
 					});
 					
 				})
@@ -379,9 +385,17 @@ function timeInS(time) {
 // Cambia el tiempo en segundos a formato hh:mm:ss
 
 function timeInHms(inseconds){
+	var oneDay=86400;
+	var days = 0;
 	var measuredTime = new Date(null);
+	var label = "D";
+	while (inseconds >= oneDay) {
+		inseconds -= oneDay;
+	days++;
+	}
 	measuredTime.setSeconds(inseconds); // el valor en segundos
-	return measuredTime.toISOString().substr(11, 8);
+	return days+label+measuredTime.toISOString().slice(11, 19);
+	
 }
 
 
